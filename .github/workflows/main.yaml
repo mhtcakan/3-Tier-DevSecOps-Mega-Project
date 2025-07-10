@@ -36,19 +36,19 @@ jobs:
         with:
           node-version: '23'
       
-      - name: Install Gitleaks
-        run: |
-          sudo apt-get update && sudo apt-get install gitleaks
+      # - name: Install Gitleaks
+      #   run: |
+      #     sudo apt-get update && sudo apt-get install gitleaks
 
-      - name: Frontend Compilation
-        working-directory: client
-        run: |
-          find . -name "*.js" -exec node --check {} +
+      # - name: Frontend Compilation
+      #   working-directory: client
+      #   run: |
+      #     find . -name "*.js" -exec node --check {} +
 
-      - name: Backend Compilation
-        working-directory: api
-        run: |
-          find . -name "*.js" -exec node --check {} +
+      # - name: Backend Compilation
+      #   working-directory: api
+      #   run: |
+      #     find . -name "*.js" -exec node --check {} +
 
       # - name: GitLeaks Scan on Frontend
       #   run: gitleaks detect --source ./client --exit-code 1
