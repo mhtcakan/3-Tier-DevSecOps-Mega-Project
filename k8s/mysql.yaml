@@ -85,6 +85,13 @@ spec:
                   key: MYSQL_DATABASE
           ports:
             - containerPort: 3306
+          resources:
+            limits:
+               memory: "400Mi"
+               cpu: "500m"
+            requests:
+               memory: "200Mi"
+               cpu: "200m"
           volumeMounts:
             - name: mysql-storage
               mountPath: /var/lib/mysql
