@@ -36,9 +36,16 @@ spec:
     spec:
       containers:
         - name: backend
-          image: adijaiswal/backend:latest
+          image: ankitsarkar31/backend-app:latest
           ports:
             - containerPort: 5000
+          resources:
+            limits:
+               memory: "400Mi"
+               cpu: "500m"
+            requests:
+               memory: "200Mi"
+               cpu: "200m"
           env:
             - name: DB_HOST
               valueFrom:

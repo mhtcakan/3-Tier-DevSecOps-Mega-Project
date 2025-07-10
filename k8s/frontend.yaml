@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
-  namespace: dev
 spec:
   replicas: 1
   selector:
@@ -15,15 +14,21 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: adijaiswal/frontend:latest
+          image: ankitsarkar31/frontend-app:latest
           ports:
             - containerPort: 80
+          resources:
+            limits:
+               memory: "500Mi"
+               cpu: "500m"
+            requests:
+               memory: "500Mi"
+               cpu: "500m"
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: frontend
-  namespace: dev
 spec:
   selector:
     app: frontend
