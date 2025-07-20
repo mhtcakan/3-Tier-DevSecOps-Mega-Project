@@ -1,0 +1,28 @@
+Installing MySQL
+1-sudo apt update
+2-install the mysql-server package:
+sudo apt install mysql-server
+3-Ensure that the server is running using the systemctl start command:
+sudo systemctl start mysql.service
+4-First, open up the MySQL prompt:
+sudo mysql
+5-run the following ALTER USER command to change the root user’s authentication method to one that uses a password. The following example changes the authentication method to mysql_native_password:
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+6-After making this change, exit the MySQL prompt:
+exit
+7-mysql -u root -p
+8-Create the database if not already exists
+CREATE DATABASE IF NOT EXISTS crud_app;
+9-Switch to the database
+USE crud_app;
+10--- Create the `users` table with proper structure
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  role ENUM('admin', 'viewer') NOT NULL DEFAULT 'viewer',
+  is_active TINYINT(1) DEFAULT 1,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
